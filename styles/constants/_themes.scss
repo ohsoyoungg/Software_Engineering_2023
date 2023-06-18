@@ -1,0 +1,25 @@
+@use '../constants/colors';
+
+// LIGHTMODE
+$LIGHT_BACKGROUND_OUTSIDE: #d9dff8;
+$LIGHT_BACKGROUND_INSIDE: #f4f6fd;
+$LIGHT_TITLE: #1f315b;
+$LIGHT_ICON: #1f315b;
+
+// DARKMODE
+$DARK_BACKGROUND_OUTSIDE: #d9dff8;
+$DARK_BACKGROUND_INSIDE: #353b48;
+$DARK_TITLE: #f4f6fd;
+$DARK_ICON: #f4f6fd;
+
+div.todoList[data-theme='light'] {
+  --color-title: #{$LIGHT_TITLE};
+  --color-background: #{$LIGHT_BACKGROUND_INSIDE};
+  --color-icon: #{$LIGHT_ICON};
+}
+
+div.todoList[data-theme='dark'] {
+  --color-title: #{$DARK_TITLE};
+  --color-background: #{$DARK_BACKGROUND_INSIDE};
+  --color-icon: #{$DARK_ICON};
+}

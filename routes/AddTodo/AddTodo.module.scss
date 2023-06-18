@@ -1,0 +1,169 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/position';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/visual';
+@use '/src/styles/constants/themes';
+
+.todoList {
+  position: relative;
+  width: 360px;
+  height: 720px;
+  padding: 250px 40px 40px;
+  background-color: var(--color-background);
+  // background-color: #fafbfe;
+  border-radius: 60px;
+
+  .closeButton {
+    position: absolute;
+    top: 55px;
+    right: 40px;
+    background-color: themes.$LIGHT_BACKGROUND_INSIDE;
+    @include visual.whiteButton(3em, 50%);
+
+    svg {
+      width: 17px;
+      height: 17px;
+      color: colors.$BIG_TITLE;
+      stroke-width: 20;
+      @include flexbox.flexbox;
+    }
+  }
+
+  .taskInput {
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-title);
+
+    &::placeholder {
+      color: colors.$TASKS_TITLE;
+    }
+  }
+
+  .addButton {
+    @include position.absolute(auto 40px 40px auto);
+    @include flexbox.flexbox;
+    width: 50%;
+    height: 56px;
+    font-size: 0.9rem;
+    color: colors.$WHITE;
+    background-color: colors.$BLUE;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px 0 rgba(colors.$BLACK, 15%);
+    transition: 0.2s;
+
+    svg {
+      margin-left: 0.4em;
+      font-size: 1.4rem;
+    }
+
+    &:hover {
+      background-color: rgba(colors.$BLUE, 90%);
+    }
+  }
+
+  .optionsWapper {
+    position: relative;
+    display: flex;
+    margin-top: 2em;
+  }
+
+  .calendarBox {
+    background-color: themes.$LIGHT_BACKGROUND_INSIDE;
+    @include visual.whiteBox;
+
+    .dateInput {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      &::-webkit-datetime-edit-text,
+      &::-webkit-datetime-edit-month-field,
+      &::-webkit-datetime-edit-day-field,
+      &::-webkit-datetime-edit-year-field {
+        display: none;
+        -webkit-appearance: none;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background-color: red;
+        border-radius: 2em;
+        opacity: 0;
+      }
+    }
+
+    svg {
+      font-size: 1.3em;
+    }
+
+    .optionTitle {
+      @include visual.boxTitle;
+      width: 40px;
+      margin-left: 0.5em;
+    }
+  }
+
+  .categoryBox {
+    margin-left: 1em;
+    background-color: themes.$LIGHT_BACKGROUND_INSIDE;
+    @include visual.whiteBox(7em);
+
+    .optionTitle {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      color: colors.$TASKS_TITLE;
+      @include flexbox.flexbox;
+      @include visual.boxTitle;
+    }
+
+    .categorName {
+      margin-left: 6px;
+    }
+
+    .optionsWrapper {
+      position: absolute;
+      top: 120%;
+      width: 100%;
+      background-color: themes.$LIGHT_BACKGROUND_INSIDE;
+      border: 2px solid #e4e7ee;
+      border-radius: 1em;
+      transition: height 0.5s;
+
+      .option {
+        width: 100%;
+        height: 100%;
+        @include flexbox.flexbox;
+        @include visual.boxTitle;
+
+        button {
+          width: 100%;
+          padding: 1em;
+          font-size: 1em;
+          line-height: 100%;
+          color: colors.$TASKS_TITLE;
+          @include flexbox.flexbox;
+          @include visual.boxTitle;
+        }
+
+        &:hover {
+          background-color: #e4e7ee;
+        }
+
+        &:first-child {
+          border-radius: 1em 1em 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 1em 1em;
+        }
+      }
+    }
+
+    @include visual.changeColor;
+  }
+}

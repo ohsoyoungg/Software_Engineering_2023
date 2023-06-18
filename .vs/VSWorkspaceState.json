@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\routes",
+    "\\routes\\AddTodo",
+    "\\routes\\EditTodo",
+    "\\routes\\TodoList"
+  ],
+  "SelectedNode": "\\routes\\TodoList\\index.js",
+  "PreviewInSolutionExplorer": false
+}

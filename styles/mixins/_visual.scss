@@ -1,0 +1,101 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+@mixin hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin mobileHidden {
+  @media screen and (max-width: 999px) {
+    display: none !important;
+  }
+}
+
+@mixin desktopHidden {
+  @media screen and (min-width: 1000px) {
+    display: none !important;
+  }
+}
+
+@mixin noScrollbar() {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin changeColor {
+  .study {
+    &::before {
+      background-color: colors.$STUDY;
+    }
+  }
+
+  .business {
+    &::before {
+      background-color: colors.$BUSINESS;
+    }
+  }
+
+  .personal {
+    &::before {
+      background-color: colors.$PERSONAL;
+    }
+  }
+
+  .exercise {
+    &::before {
+      background-color: colors.$EXERCISE;
+    }
+  }
+
+  .etc {
+    &::before {
+      background-color: colors.$ETC;
+    }
+  }
+}
+
+@mixin beforeCircle($w: 12px, $h: 12px) {
+  width: $w;
+  height: $h;
+  margin-right: 5px;
+  content: '';
+  border-radius: 6px;
+  @include changeColor;
+}
+
+@mixin whiteButton($w, $radius, $h: 3em) {
+  @include flexbox.flexbox;
+  width: $w;
+  height: $h;
+  font-weight: 600;
+  color: colors.$TASKS_TITLE;
+  border: 2px solid #e4e7ee;
+  border-radius: $radius;
+}
+
+@mixin whiteBox($w: 6em) {
+  @include flexbox.flexbox;
+  position: relative;
+  width: $w;
+  height: 2.5em;
+  font-weight: 600;
+  color: colors.$TASKS_TITLE;
+  cursor: pointer;
+  border: 2px solid #e4e7ee;
+  border-radius: 2em;
+}
+
+@mixin boxTitle() {
+  font-size: 0.8em;
+  font-weight: 600;
+}
